@@ -9,7 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import kotlin.random.Random
 
-class CircleView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
+class TouchesView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     private val paint = Paint()
     private var radius = 0f
     private var x = 0f
