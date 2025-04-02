@@ -1,4 +1,4 @@
-package com.mon.singer
+package com.mon.mustudio
 
 import android.app.Application
 

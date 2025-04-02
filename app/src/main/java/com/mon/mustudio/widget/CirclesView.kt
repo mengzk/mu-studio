@@ -12,7 +12,7 @@ import android.os.Looper
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import com.mon.singer.R
+import com.mon.mustudio.R
 import kotlin.random.Random
 
 class CirclesView(context: Context, attrs: AttributeSet?) : View(context, attrs) {

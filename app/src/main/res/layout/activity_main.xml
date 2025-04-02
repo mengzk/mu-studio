@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+
     android:id="@+id/main_layout">
 
-    <com.mon.singer.widget.CirclesView
+    <com.mon.mustudio.widget.CirclesView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/circles_view" />
