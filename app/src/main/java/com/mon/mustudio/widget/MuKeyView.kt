@@ -23,6 +23,12 @@ class MuKeyView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     private val handler = Handler(Looper.getMainLooper())
     private val beatInterval = 600L // 每节拍的间隔时间，单位为毫秒
 
+    // 绘制钢琴键
+    private val totalKeys = 32
+    private val keysPerRow = totalKeys / 2
+
+    val noteNames = arrayOf("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
+
     init {
         paint.style = Paint.Style.FILL
 
@@ -74,14 +80,10 @@ class MuKeyView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        // 绘制钢琴键
-        val totalKeys = 32
-        val keysPerRow = totalKeys / 2
         val keyHeight = height / keysPerRow.toFloat()
         val keyWidth = width / 2f
         val blackKeyHeight = keyHeight * 0.6f
         val blackKeyWidth = keyWidth * 0.6f
-        val noteNames = arrayOf("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B")
 
         for (i in 0 until totalKeys) {
             val isWhiteKey = when (i % 12) {

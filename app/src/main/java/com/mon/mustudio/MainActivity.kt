@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playSound() {
-
         mediaPlayer = MediaPlayer.create(this, R.raw.sound) // 确保在 res/raw 目录下有一个 sound.mp3 文件
         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
