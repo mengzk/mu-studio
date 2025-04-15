@@ -2,10 +2,12 @@ package com.mon.mustudio
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Vibrator
 import android.view.MotionEvent
+import android.view.View
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +31,17 @@ class MainActivity : AppCompatActivity() {
 
         // 禁止屏幕熄屏
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
+        // 设置全屏
+        window.decorView.systemUiVisibility = (
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+                or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                )
+
+        findViewById<View>(R.id.circles_view).setOnClickListener {
+            val intent = Intent(this, RecordActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun playSound() {
