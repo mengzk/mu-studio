@@ -11,8 +11,9 @@ android {
         applicationId = "com.mon.mustudio"
         minSdk = 23
         targetSdk = 35
-        versionCode = 1
+        versionCode = 10001
         versionName = "1.0.1"
+//        multidexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
