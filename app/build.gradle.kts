@@ -13,14 +13,35 @@ android {
         targetSdk = 35
         versionCode = 10001
         versionName = "1.0.1"
-//        multidexEnabled = true
+        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("app.keystore")
+            storePassword = "m123s987"
+            keyAlias = "key3"
+            keyPassword = "m123S987"
+        }
+        create("release") {
+            storeFile = file("app.keystore")
+            storePassword = "m123s987"
+            keyAlias = "key3"
+            keyPassword = "m123S987"
+        }
+    }
+
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = false // 代码混淆
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -34,6 +55,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -46,4 +70,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // 网络
+    implementation(libs.gson3)
+    implementation(libs.okhttp3)
+    implementation(libs.okhttp3.logging)
+    implementation(libs.retrofit2)
 }
