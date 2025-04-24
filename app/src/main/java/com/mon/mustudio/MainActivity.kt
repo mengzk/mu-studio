@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         // 设置全屏
         window.decorView.systemUiVisibility = (
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
-                or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                        or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 )
 
         findViewById<View>(R.id.circles_view).setOnClickListener {
@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun playSound() {
         mediaPlayer = MediaPlayer.create(this, R.raw.sound) // 确保在 res/raw 目录下有一个 sound.mp3 文件
         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
