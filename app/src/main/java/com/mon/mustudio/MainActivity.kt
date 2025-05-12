@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity() {
                         or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 )
 
-        findViewById<View>(R.id.circles_view).setOnClickListener {
-            val intent = Intent(this, RecordActivity::class.java)
-            startActivity(intent)
-        }
+//        findViewById<View>(R.id.circles_view).setOnClickListener {
+//            val intent = Intent(this, RecordActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
