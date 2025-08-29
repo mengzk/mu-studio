@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.PersistableBundle
 import android.os.SystemClock
-import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.edu.postest.MainActivity
@@ -17,7 +16,7 @@ import com.edu.postest.MainActivity
  * Modify: 2025/11/21
  * Desc:
  */
-open class VMNavActivity : AppCompatActivity() {
+open class VMActivity : AppCompatActivity() {
     private var lastTouchTime = 0L
     private var duration = 120000L
     private val handler = Handler(Looper.getMainLooper())

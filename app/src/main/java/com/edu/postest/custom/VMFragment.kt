@@ -32,7 +32,7 @@ open class VMFragment<VB : ViewDataBinding>(@LayoutRes val layoutId: Int) : Frag
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        activity = context as VMNavActivity
+        activity = context as VMActivity
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -50,7 +50,7 @@ open class VMFragment<VB : ViewDataBinding>(@LayoutRes val layoutId: Int) : Frag
         binding = DataBindingUtil.inflate<VB>(inflater, layoutId, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
-        onBindView(binding as VB, savedInstanceState)
+        onBindView(binding, savedInstanceState)
         return binding.root
 //        return super.onCreateView(inflater, container, savedInstanceState)
     }
