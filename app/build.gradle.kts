@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.mon.mustudio"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.mon.mustudio"
