@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MuStudio"
+rootProject.name = "PosTest"
 include(":app")

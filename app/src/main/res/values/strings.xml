@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">MuStudio</string>
+    <string name="app_name">PosTest</string>
+    <string name="home_name">健康检测</string>
+    <string name="ok">确定</string>
+    <string name="commit">确定</string>
+    <string name="commit2">确 定</string>
+    <string name="submit">提交</string>
+    <string name="submit2">提 交</string>
+    <string name="hint">请输入</string>
+    <string name="select">请选择</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+    <string name="home">主页</string>
+    <string name="next">下一步</string>
+    <string name="last">上一步</string>
+    <string name="complete">完成</string>
+    <string name="video">视频</string>
+    <string name="photo">照片</string>
+    <string name="album">相册</string>
+    <string name="camera">相机</string>
+    <string name="save">保存</string>
+    <string name="delete">删除</string>
+    <string name="loading">加载中…</string>
+    <string name="result">查看结果</string>
+    <string name="look">立即查看</string>
+    <string name="login">登 录</string>
+    <string name="reset">重新检测</string>
+    <string name="dialog">温馨提示</string>
 </resources>
