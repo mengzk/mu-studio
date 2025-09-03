@@ -17,7 +17,7 @@ import kotlin.system.exitProcess
  * Desc:
  */
 
-class OneException private constructor(context: Context) : Thread.UncaughtExceptionHandler {
+class AppException private constructor(context: Context) : Thread.UncaughtExceptionHandler {
     // 系统默认的UncaughtException处理
     private val mDefaultHandler: Thread.UncaughtExceptionHandler?
     private val context: Context
@@ -147,8 +147,8 @@ class OneException private constructor(context: Context) : Thread.UncaughtExcept
     }
 
     companion object {
-        fun getAppExceptionHandler(context: Context): OneException {
-            return OneException(context)
+        fun getAppExceptionHandler(context: Context): AppException {
+            return AppException(context)
         }
     }
 }
