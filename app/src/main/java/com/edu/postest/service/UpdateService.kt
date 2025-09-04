@@ -31,7 +31,7 @@ class UpdateService : JobService() {
     private val Tag = "UpdateService"
 //    private val JOB_ID = 1000
     private var savePath = ""
-    private val apkName = "app_pack.apk"
+    private val apkName = "app_package.apk"
     private var mContext: Context? = null
     private var downing = false
     private val diskIO: Executor = Executors.newSingleThreadExecutor()
@@ -140,13 +140,13 @@ class UpdateService : JobService() {
     }
 
     companion object {
-        var JOB_CODE: Int = 1231
+        var JOB_CODE: Int = 123321
         var apkUrl = ""
         fun start(context: Context, url: String) {
             apkUrl = url
             val serviceName = ComponentName(context, UpdateService::class.java)
             val jobBuilder = JobInfo.Builder(JOB_CODE, serviceName)
-            jobBuilder.setPeriodic((1000 * 60 * 15).toLong())
+            jobBuilder.setPeriodic((1000 * 60 * 20).toLong())
             val myJob = jobBuilder.build()
 
             val scheduler = context.getSystemService(JobScheduler::class.java)

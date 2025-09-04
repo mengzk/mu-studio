@@ -105,6 +105,8 @@
         <activity
             android:name=".ui.HomeActivity"
             android:exported="false" />
+
+        <service android:name=".service.UpdateService" />
     </application>
 
 </manifest>

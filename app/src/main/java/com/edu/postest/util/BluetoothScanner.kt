@@ -1,4 +1,4 @@
-package com.edu.postest.service
+package com.edu.postest.util
 
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
