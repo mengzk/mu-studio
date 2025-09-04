@@ -62,14 +62,49 @@
         </provider>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--  通过自定义 scheme 打开app  -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="com.edu.postest"
+                    android:scheme="pos" />
+            </intent-filter>
+            <!--  通过 scheme 打开app，并可携带参数  -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="com.edu.postest"
+                    android:pathPrefix="/test"
+                    android:scheme="pos" />
+            </intent-filter>
+            <!--  通过 scheme 打开app，并可携带参数  -->
+
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.TestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

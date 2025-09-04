@@ -6,7 +6,7 @@ import android.os.Build
  * Author: Meng
  * Date: 2025/08/03
  * Modify: 2025/08/03
- * Desc: 常量
+ * Desc: 常量类 -单例
  */
 object Constants {
     var USER_ID = "" // 用户id

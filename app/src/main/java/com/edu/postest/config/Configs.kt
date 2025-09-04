@@ -4,7 +4,7 @@ package com.edu.postest.config
  * Author: Meng
  * Date: 2025/11/21
  * Modify: 2025/11/21
- * Desc:
+ * Desc: 配置类 -单例
  */
 object Configs {
     private var env: String = "test"
