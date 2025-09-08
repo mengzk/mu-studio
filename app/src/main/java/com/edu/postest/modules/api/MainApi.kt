@@ -15,8 +15,8 @@ import retrofit2.http.*
  * Date: 2025/11/21
  * Modify: 2025/11/21
  * Desc:
- *  AppApis.mainApi.checkVersion("").enqueue(object : OKCallback<ResultData<Any>>() {
- *     override fun onResult(result: ResultData<Any>) {
+ *  AppApis.mainApi.test33("").enqueue(object : RfCallback<BodyData<Any>>() {
+ *     override fun onResult(result: Any) {
  *          super.onResult(result)
  *     }
  *     override fun onFail(code: Int, e: Throwable) {
@@ -58,15 +58,14 @@ interface MainApi {
      * @param phone
      * @param verifyCode
      */
-    @POST("/login/login")
+    @POST("/account/login")
     fun loginAccount(@Body body: LoginBody): Call<BodyData<UserEntity>>
 
     /**
      * 检测版本更新
      */
     @GET("version/check")
-    fun checkVersion(@Query("version") version: String, @Query("os") os: Long): Call<BodyData<UpdateEntity>>
-
+    suspend fun checkVersion(@Query("version") version: String): BodyData<UpdateEntity>
 
     /**
      *

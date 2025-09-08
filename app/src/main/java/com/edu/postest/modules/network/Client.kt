@@ -12,28 +12,20 @@ import retrofit2.Retrofit
  * Modify: 2024/11/21
  * Desc:
 
-    Client.main.test(1).enqueue(object : Callback<Any>{
-        override fun onFailure(call: retrofit2.Call<Any>, t: Throwable) {}
-
-        override fun onResponse(call: retrofit2.Call<Any>, response: retrofit2.Response<Any>) {
-            if (response.isSuccessful) {
-                for ((name, value) in response.headers()) {
-                    println("$name: $value")
-                }
-                println(response.body().toString())
-            }
-            println(call.request().url)
-        }
-    })
+Client.main.loginAccount(LoginBody("","")).enqueue(object : RfCallback<UserEntity>(){
+    override fun onResult(res: UserEntity) {
+        Log.i("WelcomeActivity", "---> login: ")
+    }
+    override fun onFail(code: Int, e: Throwable) {
+        super.onFail(code, e)
+    }
+})
  */
 object Client {
     val VideoType = "video/mp4".toMediaTypeOrNull()
     val ImageType = "image/*".toMediaTypeOrNull()
-    val PNGType = "image/png".toMediaTypeOrNull()
-    val TextType = "text/plain".toMediaTypeOrNull()
-    val JsonType = "application/json; charset=utf-8".toMediaTypeOrNull()
+    val JsonType = "application/json;charset=utf-8".toMediaTypeOrNull()
     val FormType = "application/x-www-form-urlencoded".toMediaTypeOrNull()
-    val StreamType = "application/octet-stream".toMediaTypeOrNull()
     val FormData = "multipart/form-data".toMediaTypeOrNull()
 
     lateinit var main: MainApi
@@ -55,5 +47,20 @@ object Client {
         val mainUrl =  Configs.getDomain(Configs.getEnv())
         val retrofit = builder.baseUrl(mainUrl).build()
         main = retrofit.create(MainApi::class.java)
+    }
+
+
+    // 协程封装
+    suspend fun <T> safeApiCall(block: suspend () -> BodyData<T>): SafeResult<T> {
+        return try {
+            val res = block()
+            if(res.code == 0) {
+                SafeResult.Success(res.data)
+            } else {
+                SafeResult.Error(res.message)
+            }
+        } catch (e: Exception) {
+            SafeResult.Error(e.message ?: "请求处理报错")
+        } as SafeResult<T>
     }
 }

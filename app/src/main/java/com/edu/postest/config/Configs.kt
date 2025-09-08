@@ -24,7 +24,7 @@ object Configs {
         return when (env) {
             "test" -> "https://test.com"
             "dev" -> "http://192.168.31.1:8093"
-            else -> "https://test.com"
+            else -> "https://prod.com"
         }
     }
 }

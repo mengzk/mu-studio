@@ -4,6 +4,7 @@ import com.edu.postest.modules.network.interceptor.LogInterceptor
 import com.edu.postest.modules.network.interceptor.ParamInterceptor
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.util.concurrent.TimeUnit
 
 /**
@@ -15,6 +16,14 @@ import java.util.concurrent.TimeUnit
 class OkClient3 {
 
     companion object {
+//        val VideoType = "video/mp4".toMediaTypeOrNull()
+//        val ImageType = "image/*".toMediaTypeOrNull()
+//        val PNGType = "image/png".toMediaTypeOrNull()
+//        val TextType = "text/plain".toMediaTypeOrNull()
+//        val JsonType = "application/json; charset=utf-8".toMediaTypeOrNull()
+//        val FormType = "application/x-www-form-urlencoded".toMediaTypeOrNull()
+//        val StreamType = "application/octet-stream".toMediaTypeOrNull()
+//        val FormData = "multipart/form-data".toMediaTypeOrNull()
         private val MEDIA_MARKDOWN = "text/x-markdown; charset=utf-8".toMediaType()
         private val MEDIA_PNG = "image/png".toMediaType()
         private lateinit var client: OkHttpClient
