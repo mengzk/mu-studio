@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/test"
+    app:startDestination="@id/frag_test1">
+
+    <fragment
+        android:id="@+id/frag_test1"
+        android:name="com.edu.postest.ui.TestFragment"
+        android:label="FragTest" >
+        <action
+            android:id="@+id/test_to_test2"
+            app:destination="@id/frag_test2" />
+        <action
+            android:id="@+id/test_to_test3"
+            app:destination="@id/frag_test3" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_test2"
+        android:name="com.edu.postest.ui.testNav.Test2Fragment"
+        android:label="FragTest2">
+        <action
+            android:id="@+id/test2_to_test3"
+            app:destination="@id/frag_test3" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_test3"
+        android:name="com.edu.postest.ui.testNav.Test3Fragment"
+        android:label="FragTest3"/>
+</navigation>

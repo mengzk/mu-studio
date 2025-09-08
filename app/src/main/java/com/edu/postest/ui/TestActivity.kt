@@ -1,9 +1,15 @@
 package com.edu.postest.ui
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
+import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import com.edu.postest.R
 import com.edu.postest.custom.VMActivity
+import androidx.navigation.findNavController
 
 /**
  * Author: Meng
@@ -19,8 +25,58 @@ class TestActivity: VMActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.act_home)
+        setContentView(R.layout.act_test)
+
+        onBackPressedDispatcher.addCallback(this) {
+            onBack()
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                OnBackInvokedCallback {
+                    // 这里处理侧滑返回
+                    onBack()
+                }
+            )
+        }
     }
 
+    override fun onResume() {
+        super.onResume()
+        initView()
+    }
+
+    fun initView() {
+        val nav = this.findNavController(R.id.nav_host_test)
+        nav.navigate(R.id.frag_test1)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+//        return super.onSupportNavigateUp()
+        val nav = this.findNavController(R.id.nav_host_test)
+        return nav.navigateUp()
+    }
+
+//    @Deprecated("Deprecated in Java")
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val nav = this.findNavController(R.id.nav_host_test)
+//        if (nav.currentDestination?.id == R.id.frag_test1) {
+//            finish()
+//        } else {
+//            nav.popBackStack()
+//        }
+//    }
+
+    fun onBack() {
+        val nav = findNavController(R.id.nav_host_test)
+        Log.i("TestActivity", "-------> onCreate: back: ${nav.currentDestination?.id}")
+        if (nav.currentDestination?.id == R.id.frag_test1) {
+            finish()
+        } else {
+            nav.popBackStack()
+        }
+    }
 
 }
