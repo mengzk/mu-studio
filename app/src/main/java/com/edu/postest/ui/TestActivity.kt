@@ -1,6 +1,7 @@
 package com.edu.postest.ui
 
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.edu.postest.R
 import com.edu.postest.custom.VMActivity
 
@@ -11,6 +12,9 @@ import com.edu.postest.custom.VMActivity
  * Desc:
  */
 class TestActivity: VMActivity() {
+    private val viewModel: TestViewModel by lazy {
+        ViewModelProvider(this)[TestViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

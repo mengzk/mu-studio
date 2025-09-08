@@ -1,6 +1,7 @@
 package com.edu.postest.ui
 
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.edu.postest.R
 import com.edu.postest.custom.VMActivity
 
@@ -11,12 +12,14 @@ import com.edu.postest.custom.VMActivity
  * Desc:
  */
 class HomeActivity: VMActivity() {
+    private val viewModel: HomeViewModel by lazy {
+        ViewModelProvider(this)[HomeViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.act_home)
     }
-
 
 }
