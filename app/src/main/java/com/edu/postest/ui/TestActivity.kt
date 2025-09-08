@@ -27,29 +27,27 @@ class TestActivity: VMActivity() {
 
         setContentView(R.layout.act_test)
 
-        onBackPressedDispatcher.addCallback(this) {
-            onBack()
-        }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             onBackInvokedDispatcher.registerOnBackInvokedCallback(
-                OnBackInvokedDispatcher.PRIORITY_DEFAULT,
-                OnBackInvokedCallback {
-                    // 这里处理侧滑返回
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT, {
                     onBack()
                 }
             )
+        }else {
+            onBackPressedDispatcher.addCallback(this) {
+                onBack()
+            }
+        }
+
+        // 只在首次创建时初始化
+        if (savedInstanceState == null) {
+            initView()
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        initView()
-    }
-
     fun initView() {
-        val nav = this.findNavController(R.id.nav_host_test)
-        nav.navigate(R.id.frag_test1)
+//        val nav = this.findNavController(R.id.nav_host_test)
+//        nav.navigate(R.id.frag_test1)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -70,13 +68,13 @@ class TestActivity: VMActivity() {
 //    }
 
     fun onBack() {
-        val nav = findNavController(R.id.nav_host_test)
-        Log.i("TestActivity", "-------> onCreate: back: ${nav.currentDestination?.id}")
-        if (nav.currentDestination?.id == R.id.frag_test1) {
-            finish()
-        } else {
-            nav.popBackStack()
-        }
+        Log.e("TestActivity", "-------> onCreate: back")
+//        val nav = findNavController(R.id.nav_host_test)
+//        if (nav.currentDestination?.id == R.id.frag_test1) {
+//            finish()
+//        } else {
+//            nav.popBackStack()
+//        }
     }
 
 }
