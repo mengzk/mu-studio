@@ -6,15 +6,10 @@ import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.edu.postest.model.body.LoginBody
-import com.edu.postest.model.entity.UpdateEntity
-import com.edu.postest.model.entity.UserEntity
-import com.edu.postest.modules.network.BodyData
 import com.edu.postest.modules.network.Client
-import com.edu.postest.modules.network.RfCallback
 import com.edu.postest.modules.network.SafeResult
+import com.edu.postest.modules.network.safeApiCall
 import kotlinx.coroutines.launch
-import retrofit2.Callback
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -44,7 +39,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     fun check() {
         lifecycleScope.launch {
-            val res = Client.safeApiCall { Client.main.checkVersion("1212")}
+            val res = safeApiCall { Client.main.checkVersion("1212")}
             if(res is SafeResult.Success) {
                 Log.i("WelcomeActivity", "---> res: "+res.data.version)
             }else if(res is SafeResult.Error) {
