@@ -49,6 +49,12 @@ class TestActivity: VMActivity() {
     fun initView() {
 //        val nav = this.findNavController(R.id.nav_host_test)
 //        nav.navigate(R.id.frag_test1)
+
+        viewModel.title.observe(this) { text ->
+            // 这里对 Activity 的 UI 赋值
+            Log.i("TestActivity", "---> title: $text")
+        }
+        viewModel.updateTitle("Test Activity 1234567890")
     }
 
     override fun onSupportNavigateUp(): Boolean {

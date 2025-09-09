@@ -1,5 +1,6 @@
 package com.edu.postest.ui
 
+import android.util.Log
 import com.edu.postest.custom.AppViewModel
 
 /**
@@ -10,5 +11,7 @@ import com.edu.postest.custom.AppViewModel
  */
 class HomeViewModel : AppViewModel() {
 
-
+    fun test() {
+        Log.i("HomeViewModel", "---> test:")
+    }
 }
