@@ -1,11 +1,15 @@
 package com.edu.postest.custom
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -33,13 +37,6 @@ open class VMFragment<VB : ViewDataBinding>(@LayoutRes val layoutId: Int) : Frag
     override fun onAttach(context: Context) {
         super.onAttach(context)
         activity = context as VMActivity
-
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                onBackPressed()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     override fun onCreateView(
@@ -79,8 +76,16 @@ open class VMFragment<VB : ViewDataBinding>(@LayoutRes val layoutId: Int) : Frag
     }
 
 
+//
+    protected fun initBackLis() {
 
-    protected fun onBackPressed() {
+//        val callback = object : OnBackPressedCallback(true) {
+//            override fun handleOnBackPressed() {
+//                onBack()
+//            }
+//        }
+//        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
 //        val canBack = navigation().navigateUp()
         val canBack = navigation().popBackStack()
         if(canBack) {

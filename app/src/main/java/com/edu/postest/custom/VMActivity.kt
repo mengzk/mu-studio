@@ -1,12 +1,16 @@
 package com.edu.postest.custom
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.PersistableBundle
 import android.os.SystemClock
 import android.view.MotionEvent
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.edu.postest.MainActivity
 
@@ -27,6 +31,20 @@ open class VMActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ActivityStack.add(this)
+
+//        // 处理侧滑返回事件
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+//                OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+//                OnBackInvokedCallback {
+//                    onBack()
+//                }
+//            )
+//        }else {
+//            onBackPressedDispatcher.addCallback(this) {
+//                onBack()
+//            }
+//        }
     }
 
     override fun onResume() {

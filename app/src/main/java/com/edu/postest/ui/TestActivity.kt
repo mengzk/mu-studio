@@ -24,12 +24,13 @@ class TestActivity: VMActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.act_test)
 
+        // 处理侧滑返回事件
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             onBackInvokedDispatcher.registerOnBackInvokedCallback(
-                OnBackInvokedDispatcher.PRIORITY_DEFAULT, {
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                OnBackInvokedCallback {
                     onBack()
                 }
             )
@@ -59,22 +60,17 @@ class TestActivity: VMActivity() {
 //    @Deprecated("Deprecated in Java")
 //    override fun onBackPressed() {
 //        super.onBackPressed()
-//        val nav = this.findNavController(R.id.nav_host_test)
-//        if (nav.currentDestination?.id == R.id.frag_test1) {
-//            finish()
-//        } else {
-//            nav.popBackStack()
-//        }
+//        onBack()
 //    }
 
     fun onBack() {
         Log.e("TestActivity", "-------> onCreate: back")
-//        val nav = findNavController(R.id.nav_host_test)
-//        if (nav.currentDestination?.id == R.id.frag_test1) {
-//            finish()
-//        } else {
-//            nav.popBackStack()
-//        }
+        val nav = findNavController(R.id.nav_host_test)
+        if (nav.currentDestination?.id == R.id.frag_test1) {
+            finish()
+        } else {
+            nav.popBackStack()
+        }
     }
 
 }
